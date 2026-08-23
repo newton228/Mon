@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Stuff</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #64748b;
+      --paper: #f7f3eb;
+      --card: #fffdf8;
+      --accent: #d86b4a;
+      --accent-dark: #a8472f;
+      --line: #e6ded1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(216, 107, 74, 0.14), transparent 26%),
+        linear-gradient(135deg, #f7f3eb 0%, #eef1e8 100%);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    main {
+      width: min(100% - 2rem, 920px);
+      margin: 0 auto;
+      padding: 2rem 0 5rem;
+    }
+
+    .back-link {
+      color: var(--accent-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    header {
+      max-width: 700px;
+      margin: 5rem auto 4rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+    }
+
+    .section {
+      margin-top: 7rem;
+    }
+
+    .section-heading {
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 0.65rem;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2.5rem 1.5rem;
+      align-items: start;
+    }
+
+    figure {
+      margin: 0;
+      grid-column: span 3;
+      transform: rotate(-2deg);
+    }
+
+    figure:nth-child(2) {
+      grid-column: 5 / span 4;
+      margin-top: 3rem;
+      transform: rotate(2deg);
+    }
+
+    figure:nth-child(3) {
+      grid-column: 10 / span 3;
+      margin-top: -1rem;
+      transform: rotate(-1deg);
+    }
+
+    figure:nth-child(4) {
+      grid-column: 4 / span 4;
+      margin-top: 1rem;
+      transform: rotate(3deg);
+    }
+
+    .image-slot {
+      display: grid;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      place-items: center;
+      padding: 1rem;
+      border: 8px solid var(--card);
+      background: #ebe4d7;
+      box-shadow: 0 8px 18px rgba(31, 41, 51, 0.13);
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    figure img,
+    .image-slot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      border: 8px solid var(--card);
+      background: #ebe4d7;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(31, 41, 51, 0.13);
+    }
+
+    .alphabet-card,
+    .link-card {
+      padding: 2rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.82);
+      box-shadow: 0 10px 25px rgba(31, 41, 51, 0.06);
+    }
+
+    .alphabet {
+      overflow-x: auto;
+      margin: 0;
+      color: var(--accent-dark);
+      font-family: 'Courier New', monospace;
+      font-size: clamp(0.75rem, 2.2vw, 1.35rem);
+      line-height: 2;
+      white-space: pre;
+    }
+
+    .key {
+      margin: 1.5rem 0 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .link-card a {
+      color: var(--accent-dark);
+      font-size: 1.5rem;
+    }
+
+    .link-card p {
+      max-width: 620px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        margin: 4rem auto 3rem;
+      }
+
+      .section {
+        margin-top: 5rem;
+      }
+
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1rem;
+      }
+
+      figure,
+      figure:nth-child(2),
+      figure:nth-child(3),
+      figure:nth-child(4) {
+        grid-column: auto;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      figure,
+      figure:nth-child(2),
+      figure:nth-child(3),
+      figure:nth-child(4) {
+        width: min(82%, 260px);
+      }
+
+      figure:nth-child(even) {
+        justify-self: end;
+      }
+
+      .alphabet-card,
+      .link-card {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back-link" href="home.html">&larr; Back to The Site</a>
+
+    <header>
+      <h1>Fun Stuff</h1>
+    </header>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>peak minecraft days</h2>
+      </div>
+
+      <div class="image-grid">
+        <figure><img src="images/Snapchat-880746975.jpg" alt="Image 1"></figure>
+        <figure><img src="images/Snapchat-884077530.jpg" alt="Image 2"></figure>
+        <figure><img src="images/Snapchat-1121297875.jpg" alt="Image 3"></figure>
+        <figure><img src="images/Snapchat-1928708117.jpg" alt="Image 4"></figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-number">02</span>
+        <h2>Secret Language</h2>
+      </div>
+
+      <div class="alphabet-card">
+        <pre class="alphabet">abcdefghijklmnopqrstuvwxyz
+fghijklmnopqrstuvwxyzabcde</pre>
+        <p class="key">this is a cool secret code i discovered online all you have to do is to use the alphabet below so a sentence like "im better than you in kaizen" would be "nr gjyyjw ymfs dtz ns pfnejs" it takes a while to treanslate but i think its cool we could use it some time just make sure to write what 'a' is equal to tho </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>you can distract yourself with this </h2>
+      </div>
+
+      <div class="link-card">
+        <a href="https://newton228.github.io/Stardev-portfolio/games.html">Check these cool games!</a>
+        <p>just happened to be scrolling through my old yt channel and found these the flappy bird one is ai tho but the dino one was me they might not work well on mobile .</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

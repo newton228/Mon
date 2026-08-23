@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much I Know About You</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #64748b;
+      --paper: #f7f3eb;
+      --card: #fffdf8;
+      --accent: #d86b4a;
+      --accent-dark: #a8472f;
+      --line: #e6ded1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(216, 107, 74, 0.14), transparent 26%),
+        linear-gradient(135deg, #f7f3eb 0%, #eef1e8 100%);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    main {
+      width: min(100% - 2rem, 920px);
+      margin: 0 auto;
+      padding: 2rem 0 5rem;
+    }
+
+    .back-link {
+      color: var(--accent-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    header {
+      max-width: 700px;
+      margin: 5rem auto 4rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--accent-dark);
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+    }
+
+    .intro {
+      margin: 1.5rem auto 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .article-section {
+      margin-top: 8rem;
+    }
+
+    .article-section:nth-child(even) {
+      margin-left: 8%;
+    }
+
+    .section-heading {
+      max-width: 420px;
+      margin-bottom: 2rem;
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 0.65rem;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .section-note {
+      max-width: 330px;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2.5rem 1.5rem;
+      align-items: start;
+    }
+
+    figure {
+      margin: 0;
+      grid-column: span 3;
+      transform: rotate(-2deg);
+    }
+
+    figure:nth-child(2) {
+      grid-column: 5 / span 4;
+      margin-top: 3rem;
+      transform: rotate(2deg);
+    }
+
+    figure:nth-child(3) {
+      grid-column: 10 / span 3;
+      margin-top: -1rem;
+      transform: rotate(-1deg);
+    }
+
+    figure:nth-child(4) {
+      grid-column: 2 / span 4;
+      margin-top: 1rem;
+      transform: rotate(3deg);
+    }
+
+    figure:nth-child(5) {
+      grid-column: 7 / span 3;
+      margin-top: -2rem;
+      transform: rotate(-3deg);
+    }
+
+    figure:nth-child(6) {
+      grid-column: 10 / span 3;
+      margin-top: 2rem;
+      transform: rotate(1deg);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 8px solid var(--card);
+      object-fit: cover;
+      background: #ebe4d7;
+      box-shadow: 0 8px 18px rgba(31, 41, 51, 0.13);
+    }
+
+    figcaption {
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        margin: 4rem auto 3rem;
+      }
+
+      .article-section,
+      .article-section:nth-child(even) {
+        margin-left: 0;
+        margin-top: 5rem;
+      }
+
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1rem;
+      }
+
+      figure,
+      figure:nth-child(2),
+      figure:nth-child(3),
+      figure:nth-child(4),
+      figure:nth-child(5),
+      figure:nth-child(6) {
+        grid-column: auto;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      figure,
+      figure:nth-child(2),
+      figure:nth-child(3),
+      figure:nth-child(4),
+      figure:nth-child(5),
+      figure:nth-child(6) {
+        width: min(82%, 260px);
+      }
+
+      figure:nth-child(even) {
+        justify-self: end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back-link" href="home.html">&larr; Back to The Site</a>
+
+    <header>
+      <h1>How Much I Know About You</h1>
+      <p class="intro">i kind of scrolled through our old chats to find some of these and wow.</p>
+    </header>
+
+    <article>
+      <section class="article-section">
+        <div class="section-heading">
+          <span class="section-number"> this really made me smile</span>
+          <h2>Cool things you like</h2>
+        </div>
+        <div class="image-grid">
+          <figure><img src="images/IMG_20260821_222459_540.jpg" alt="A cool thing you like"><figcaption>still thinking about this dagger.</figcaption></figure>
+          <figure><img src="images/IMG_20260821_222445_057.jpg" alt="Another cool thing you like"><figcaption>do you still wana be a hacker.</figcaption></figure>
+          <figure><img src="images/IMG_20260821_222453_796.jpg" alt="Another thing you like"><figcaption> watched it cuz you recommended it.</figcaption></figure>
+          <figure><img src="images/IMG_20260821_222503_238.jpg" alt="A fourth thing you like"><figcaption>btw i killed the minecraft one and rplaced it like twice.</figcaption></figure>
+          <figure><img src="images/IMG_20260821_222515_188.jpg" alt="A fifth thing you like"><figcaption>pretty cool skin.</figcaption></figure>
+          <figure><img src="images/IMG_20260821_222521_281.jpg" alt="A sixth thing you like"><figcaption>much safer.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="article-section">
+        <div class="section-heading">
+          <span class="section-number"> what make you you ig 🥲</span>
+          <h2>Things you hate for some reason</h2>
+        </div>
+        <div class="image-grid">
+          <figure><img src="images/market.jpg" alt="A thing you hate for some reason"><figcaption>must be the people.</figcaption></figure>
+          <figure><img src="images/matooke.jpg" alt="Another thing you hate"><figcaption>hmm i dont think its that bad.</figcaption></figure>
+          <figure><img src="images/poaschool.jpg" alt="Another thing you dislike"><figcaption>no explantion needed😂😂.</figcaption></figure>
+          <figure><img src="images/Screenshot_20260822_103343_TikTok.jpg" alt="A fourth thing you dislike"><figcaption>yh you this one for sure.</figcaption></figure>
+          <figure><img src="images/Screenshot_20260822_104137_Instagram.jpg" alt="A fifth thing you dislike"><figcaption>you might secrtcly like them.</figcaption></figure>
+          <figure><img src="images/20260822_105722.jpg" alt="A sixth thing you dislike"><figcaption>i think you dont like them anymore.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="article-section">
+        <div class="section-heading">
+          <span class="section-number">you would like these for sure</span>
+          <h2>I found these, you may like</h2>
+        </div>
+        <div class="image-grid">
+          <figure><img src="images/darkside.jpg" alt="Something I found that you may like"><figcaption>you loved this song.</figcaption></figure>
+          <figure><img src="images/20260822_111236.jpg" alt="Another thing I found that you may like"><figcaption>still have it</figcaption></figure>
+          <figure><img src="images/20260822_112950.jpg" alt="A discovery you may like"><figcaption>random cool plant</figcaption></figure>
+          <figure><img src="images/3gt2tpsecdla1.jpg" alt="Another discovery you may like"><figcaption>you would fall i love with this.</figcaption></figure>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
